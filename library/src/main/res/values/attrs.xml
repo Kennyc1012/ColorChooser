@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="ColorChooser">
+        <attr name="cc_colors" format="reference" />
+        <attr name="cc_colorNames" format="reference" />
+        <attr name="cc_defaultColorName" format="string" />
+    </declare-styleable>
+
+</resources>

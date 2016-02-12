@@ -1,0 +1,37 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+    publishNonDefault true
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 23
+        versionCode 1
+    }
+
+    productFlavors {
+        compat {
+            versionName ".1-compat"
+        }
+
+        standard {
+            versionName ".1"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+
+        debug {
+            minifyEnabled false
+        }
+    }
+}
+
+dependencies {
+    compatCompile("com.android.support:support-v4:23.1.1")
+}

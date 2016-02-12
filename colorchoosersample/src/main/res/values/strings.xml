@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">ColorChooserSample</string>
+
+    <string-array name="colors">
+        <item>#F44336</item>
+        <item>#E91E63</item>
+        <item>#9C27B0</item>
+        <item>#673AB7</item>
+        <item>#3F51B5</item>
+        <item>#03A9F4</item>
+        <item>#00BCD4</item>
+        <item>#009688</item>
+        <item>#4CAF50</item>
+    </string-array>
+
+    <string-array name="color_names">
+        <item>Red 500</item>
+        <item>Pink 500</item>
+        <item>Purple 500</item>
+        <item>Deep Purple 500</item>
+        <item>Blue 500</item>
+        <item>Light Blue 500</item>
+        <item>Cyan 500</item>
+        <item>Teal 500</item>
+        <item>Green 500</item>
+    </string-array>
+
+    <string name="title_activity_settings">Settings</string>
+</resources>

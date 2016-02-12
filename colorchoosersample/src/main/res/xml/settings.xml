@@ -1,0 +1,12 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.kennyc.colorchooser.ColorChooserPreference
+        android:key="color"
+        android:title="Color"
+        android:positiveButtonText="Okay"
+        android:negativeButtonText="Cancel"
+        app:cc_colors="@array/colors"
+        app:cc_colorNames="@array/color_names"/>
+
+</PreferenceScreen>

@@ -70,12 +70,14 @@ public class ColorChooserDialog extends BaseDialog implements AdapterView.OnItem
 
         if (!TextUtils.isEmpty(b.negativeButton)) {
             negativeBtn.setText(b.negativeButton);
+            if (b.negativeBtnColor != Color.TRANSPARENT) negativeBtn.setTextColor(b.negativeBtnColor);
         } else {
             negativeBtn.setVisibility(View.GONE);
         }
 
         if (!TextUtils.isEmpty(b.positiveButton)) {
             positiveBtn.setText(b.positiveButton);
+            if (b.positiveBtnColor != Color.TRANSPARENT) positiveBtn.setTextColor(b.positiveBtnColor);
         } else {
             positiveBtn.setVisibility(View.GONE);
         }
@@ -130,6 +132,10 @@ public class ColorChooserDialog extends BaseDialog implements AdapterView.OnItem
         private String positiveButton;
 
         private int selectedColor = Color.TRANSPARENT;
+
+        private int negativeBtnColor = Color.TRANSPARENT;
+
+        private int positiveBtnColor = Color.TRANSPARENT;
 
         private boolean showSelectedBorder = true;
 
@@ -282,9 +288,57 @@ public class ColorChooserDialog extends BaseDialog implements AdapterView.OnItem
             return this;
         }
 
+        /**
+         * Sets the {@link ColorListener} for the dialog
+         *
+         * @param listener Optional {@link ColorListener} to receive callbacks
+         * @return
+         */
         public Builder listener(ColorListener listener) {
             this.listener = listener;
             return this;
+        }
+
+        /**
+         * Sets the positive button color for the dialog
+         *
+         * @param color Color to set the positive button to
+         * @return
+         */
+        public Builder positiveButtonColor(int color) {
+            this.positiveBtnColor = color;
+            return this;
+        }
+
+        /**
+         * Sets the positive button color resource for the dialog
+         *
+         * @param colorResource Color resource to set the positive button to
+         * @return
+         */
+        public Builder positiveButtonColorRes(int colorResource) {
+            return positiveButton(resources.getColor(colorResource));
+        }
+
+        /**
+         * Sets the negative button color resource for the dialog
+         *
+         * @param color Color resource to set the negative button to
+         * @return
+         */
+        public Builder negativeButtonColor(int color) {
+            this.negativeBtnColor = color;
+            return this;
+        }
+
+        /**
+         * Sets the negative button color resource for the dialog
+         *
+         * @param colorResource Color resource to set the negative button to
+         * @return
+         */
+        public Builder negativeButtonColorRes(int colorResource) {
+            return negativeButtonColor(resources.getColor(colorResource));
         }
 
         public ColorChooserDialog build() {

@@ -1,6 +1,7 @@
 package com.kennyc.colorchoosersample;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
                         .positiveButton("Okay")
                         .negativeButton("Cancel")
                         .title("Select Color")
+                        .positiveButtonColor(Color.parseColor("#F06292"))
                         .build()
                         .show(getFragmentManager(), null);
             }

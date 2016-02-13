@@ -23,10 +23,6 @@ public class ColorChooserDialog extends BaseDialog implements AdapterView.OnItem
 
     private GridView grid;
 
-    private TextView title;
-
-    private Button negativeBtn;
-
     private Button positiveBtn;
 
     private ColorListener listener;
@@ -55,8 +51,8 @@ public class ColorChooserDialog extends BaseDialog implements AdapterView.OnItem
         }
 
         Builder b = args.getParcelable(KEY_BUILDER);
-        title = (TextView) view.findViewById(R.id.color_chooser_title);
-        negativeBtn = (Button) view.findViewById(R.id.color_chooser_neg);
+        TextView title = (TextView) view.findViewById(R.id.color_chooser_title);
+        Button negativeBtn = (Button) view.findViewById(R.id.color_chooser_neg);
         negativeBtn.setOnClickListener(this);
         positiveBtn = (Button) view.findViewById(R.id.color_chooser_pos);
         positiveBtn.setOnClickListener(this);

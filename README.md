@@ -43,6 +43,7 @@ You can also use a string array for colors. These colors <b>MUST</b> be formatte
   .build()
   .show(getFragmentManager(), "tag");
 ```
+![screenshot](https://github.com/Kennyc1012/ColorChooser/blob/master/screen_shots/ss1.png)
 
 #Preferences
 You can also use the dialog as a preference
@@ -60,7 +61,7 @@ You can also use the dialog as a preference
 
 </PreferenceScreen>
 ```
-
+![screenshot](https://github.com/Kennyc1012/ColorChooser/blob/master/screen_shots/ss2.png)
 The ```cc_colors``` attribute should be an array of colors in Hexadecimal format and ```cc_colorNames``` are optional names of the colors
 that will display in the summary if supplied.
 

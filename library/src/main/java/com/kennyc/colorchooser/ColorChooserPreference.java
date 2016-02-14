@@ -35,7 +35,7 @@ public class ColorChooserPreference extends DialogPreference implements AbsListV
     }
 
     public ColorChooserPreference(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, android.R.attr.preferenceInformationStyle);
+        super(context, attrs, android.R.attr.dialogPreferenceStyle);
         setDialogLayoutResource(R.layout.color_chooser_layout);
         setWidgetLayoutResource(R.layout.color_choose_pref_widget);
         TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.ColorChooser);

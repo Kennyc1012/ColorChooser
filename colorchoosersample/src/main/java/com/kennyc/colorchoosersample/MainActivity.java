@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
                         .title("Select Color")
                         .positiveButtonColor(Color.parseColor("#F06292"))
                         .build()
-                        .show(getFragmentManager(), null);
+                        .show(getSupportFragmentManager(), null);
             }
         });
 

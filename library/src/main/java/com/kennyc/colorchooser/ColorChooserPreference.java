@@ -13,6 +13,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 
 public class ColorChooserPreference extends DialogPreference implements AbsListView.OnItemClickListener {
+
     private GridView grid;
 
     private ImageView image;
@@ -34,7 +35,7 @@ public class ColorChooserPreference extends DialogPreference implements AbsListV
     }
 
     public ColorChooserPreference(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
+        super(context, attrs, android.R.attr.preferenceInformationStyle);
         setDialogLayoutResource(R.layout.color_chooser_layout);
         setWidgetLayoutResource(R.layout.color_choose_pref_widget);
         TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.ColorChooser);
@@ -136,8 +137,10 @@ public class ColorChooserPreference extends DialogPreference implements AbsListV
      * @param selectedColorName The selection color name, may be null
      */
     public void setColors(int colors[], int selectedIndex, String selectedColorName) {
-        if (colors == null || colors.length <= 0) throw new IllegalArgumentException("No colors were supplied to preference");
-        if (selectedIndex >= colors.length) throw new IndexOutOfBoundsException("Selected index > number of items in array");
+        if (colors == null || colors.length <= 0)
+            throw new IllegalArgumentException("No colors were supplied to preference");
+        if (selectedIndex >= colors.length)
+            throw new IndexOutOfBoundsException("Selected index > number of items in array");
         this.colors = colors;
         if (selectedIndex >= 0) selectedColor = colors[selectedIndex];
         this.selectedColorName = selectedColorName;

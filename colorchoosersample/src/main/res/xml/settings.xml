@@ -3,10 +3,10 @@
 
     <com.kennyc.colorchooser.ColorChooserPreference
         android:key="color"
-        android:title="Color"
-        android:positiveButtonText="Okay"
         android:negativeButtonText="Cancel"
-        app:cc_colors="@array/colors"
-        app:cc_colorNames="@array/color_names"/>
+        android:positiveButtonText="Okay"
+        android:title="Color"
+        app:cc_colorNames="@array/color_names"
+        app:cc_colors="@array/colors" />
 
 </PreferenceScreen>

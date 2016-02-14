@@ -17,7 +17,7 @@ android {
         }
 
         standard {
-            versionName ".2"
+            versionName ".2.1"
         }
     }
 

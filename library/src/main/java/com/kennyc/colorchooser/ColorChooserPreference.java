@@ -107,7 +107,9 @@ public class ColorChooserPreference extends DialogPreference implements AbsListV
         switch (which) {
             case DialogInterface.BUTTON_POSITIVE:
                 if (selectedColor != Color.TRANSPARENT) {
-                    persistInt(selectedColor);
+                    if(persistInt(selectedColor)) {
+                        callChangeListener(selectedColor);
+                    }
                 }
 
                 updatePreferenceDrawable();

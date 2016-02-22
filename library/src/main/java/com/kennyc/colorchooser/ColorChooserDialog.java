@@ -57,6 +57,7 @@ public class ColorChooserDialog extends BaseDialog implements AdapterView.OnItem
         positiveBtn = (Button) view.findViewById(R.id.color_chooser_pos);
         positiveBtn.setOnClickListener(this);
         grid = (GridView) view.findViewById(R.id.color_chooser_grid);
+        grid.setNumColumns(b.numColumns);
         grid.setOnItemClickListener(this);
         ColorAdapter adapter = new ColorAdapter(getActivity(), b.colors, b.showSelectedBorder);
         if (b.selectedColor != Color.TRANSPARENT) adapter.setSelectedColor(b.selectedColor);
@@ -136,6 +137,8 @@ public class ColorChooserDialog extends BaseDialog implements AdapterView.OnItem
         private int negativeBtnColor = Color.TRANSPARENT;
 
         private int positiveBtnColor = Color.TRANSPARENT;
+
+        private int numColumns = 3;
 
         private boolean showSelectedBorder = true;
 
@@ -339,6 +342,15 @@ public class ColorChooserDialog extends BaseDialog implements AdapterView.OnItem
          */
         public Builder negativeButtonColorRes(int colorResource) {
             return negativeButtonColor(resources.getColor(colorResource));
+        }
+
+        public Builder columns(int columns) {
+            numColumns = columns <= 0 ? 3 : columns;
+            return this;
+        }
+
+        public Builder columnsResource(int columnsResource) {
+            return columns(resources.getInteger(columnsResource));
         }
 
         public ColorChooserDialog build() {

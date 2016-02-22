@@ -30,6 +30,8 @@ public class ColorChooserPreference extends DialogPreference implements AbsListV
     // The selected color name. May be null if no names are supplied
     private CharSequence selectedColorName = null;
 
+    private int numColumns = 3;
+
     public ColorChooserPreference(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
@@ -42,6 +44,8 @@ public class ColorChooserPreference extends DialogPreference implements AbsListV
         CharSequence[] unParsedColors = a.getTextArray(R.styleable.ColorChooser_cc_colors);
         colorNames = a.getTextArray(R.styleable.ColorChooser_cc_colorNames);
         selectedColorName = a.getString(R.styleable.ColorChooser_cc_defaultColorName);
+        numColumns = a.getInt(R.styleable.ColorChooser_cc_columnCount, 3);
+        if (numColumns <= 0) numColumns = 3;
         setSummary(selectedColorName);
 
         if (unParsedColors != null && unParsedColors.length > 0) {
@@ -86,6 +90,7 @@ public class ColorChooserPreference extends DialogPreference implements AbsListV
     protected void onBindDialogView(View view) {
         super.onBindDialogView(view);
         grid = (GridView) view.findViewById(R.id.color_chooser_grid);
+        grid.setNumColumns(numColumns);
         grid.setOnItemClickListener(this);
         ColorAdapter adapter = new ColorAdapter(getContext(), colors, true);
         grid.setAdapter(adapter);
@@ -107,7 +112,7 @@ public class ColorChooserPreference extends DialogPreference implements AbsListV
         switch (which) {
             case DialogInterface.BUTTON_POSITIVE:
                 if (selectedColor != Color.TRANSPARENT) {
-                    if(persistInt(selectedColor)) {
+                    if (persistInt(selectedColor)) {
                         callChangeListener(selectedColor);
                     }
                 }

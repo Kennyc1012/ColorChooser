@@ -138,7 +138,7 @@ public class ColorChooserDialog extends BaseDialog implements AdapterView.OnItem
 
         private int positiveBtnColor = Color.TRANSPARENT;
 
-        private int numColumns = 3;
+        private int numColumns;
 
         private boolean showSelectedBorder = true;
 
@@ -151,6 +151,7 @@ public class ColorChooserDialog extends BaseDialog implements AdapterView.OnItem
          */
         public Builder(Context context) {
             this.resources = context.getResources();
+            numColumns = resources.getInteger(R.integer.color_chooser_column_count);
         }
 
         private Builder(Parcel in) {
@@ -160,6 +161,9 @@ public class ColorChooserDialog extends BaseDialog implements AdapterView.OnItem
             colors = in.createIntArray();
             showSelectedBorder = in.readInt() == 1;
             selectedColor = in.readInt();
+            positiveBtnColor = in.readInt();
+            negativeBtnColor = in.readInt();
+            numColumns = in.readInt();
         }
 
         /**
@@ -370,6 +374,9 @@ public class ColorChooserDialog extends BaseDialog implements AdapterView.OnItem
             dest.writeIntArray(colors);
             dest.writeInt(showSelectedBorder ? 1 : 0);
             dest.writeInt(selectedColor);
+            dest.writeInt(positiveBtnColor);
+            dest.writeInt(negativeBtnColor);
+            dest.writeInt(numColumns);
         }
 
         public static final Parcelable.Creator<Builder> CREATOR = new Parcelable.Creator<Builder>() {

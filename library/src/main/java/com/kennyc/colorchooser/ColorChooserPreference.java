@@ -44,7 +44,7 @@ public class ColorChooserPreference extends DialogPreference implements AbsListV
         CharSequence[] unParsedColors = a.getTextArray(R.styleable.ColorChooser_cc_colors);
         colorNames = a.getTextArray(R.styleable.ColorChooser_cc_colorNames);
         selectedColorName = a.getString(R.styleable.ColorChooser_cc_defaultColorName);
-        numColumns = a.getInt(R.styleable.ColorChooser_cc_columnCount, 3);
+        numColumns = a.getInt(R.styleable.ColorChooser_cc_columnCount, getContext().getResources().getInteger(R.integer.color_chooser_column_count));
         if (numColumns <= 0) numColumns = 3;
         setSummary(selectedColorName);
 

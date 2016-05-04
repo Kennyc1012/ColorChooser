@@ -86,17 +86,40 @@ class ColorAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ImageView imageView;
+        ViewHolder vh;
 
         if (convertView == null) {
-            imageView = (ImageView) mInflater.inflate(R.layout.color_chooser_item, parent, false);
+            convertView = mInflater.inflate(R.layout.color_chooser_item, parent, false);
+            vh = new ViewHolder(convertView);
         } else {
-            imageView = (ImageView) convertView;
+            vh = (ViewHolder) convertView.getTag();
         }
 
+        boolean isSelected = position == selectedPosition;
         OvalColorDrawable dr = new OvalColorDrawable(size, borderSize, colors[position]);
+
+        if (isSelected) {
+            dr.drawBorder(hasBorder);
+            vh.check.setVisibility(View.VISIBLE);
+        } else {
+            dr.drawBorder(false);
+            vh.check.setVisibility(View.GONE);
+        }
+        
         dr.drawBorder(hasBorder && position == selectedPosition);
-        imageView.setImageDrawable(dr);
-        return imageView;
+        vh.color.setImageDrawable(dr);
+        return convertView;
+    }
+
+    static class ViewHolder {
+        ImageView color;
+
+        ImageView check;
+
+        public ViewHolder(View view) {
+            color = (ImageView) view.findViewById(R.id.color);
+            check = (ImageView) view.findViewById(R.id.check);
+            view.setTag(this);
+        }
     }
 }

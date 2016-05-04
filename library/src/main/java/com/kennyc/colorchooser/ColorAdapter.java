@@ -105,7 +105,7 @@ class ColorAdapter extends BaseAdapter {
             dr.drawBorder(false);
             vh.check.setVisibility(View.GONE);
         }
-        
+
         dr.drawBorder(hasBorder && position == selectedPosition);
         vh.color.setImageDrawable(dr);
         return convertView;

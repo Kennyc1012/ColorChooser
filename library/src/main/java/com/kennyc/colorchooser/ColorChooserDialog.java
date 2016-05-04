@@ -87,6 +87,8 @@ public class ColorChooserDialog extends BaseDialog implements AdapterView.OnItem
     @Override
     public void onDestroyView() {
         listener = null;
+        grid = null;
+        positiveBtn = null;
         super.onDestroyView();
     }
 

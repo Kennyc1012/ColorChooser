@@ -59,7 +59,7 @@ public class ColorChooserDialog extends BaseDialog implements AdapterView.OnItem
         grid = (GridView) view.findViewById(R.id.color_chooser_grid);
         grid.setNumColumns(b.numColumns);
         grid.setOnItemClickListener(this);
-        ColorAdapter adapter = new ColorAdapter(getActivity(), b.colors, b.showSelectedBorder);
+        ColorAdapter adapter = new ColorAdapter(getActivity(), b.colors, b.showSelectedBorder, b.animateChange);
         if (b.selectedColor != Color.TRANSPARENT) adapter.setSelectedColor(b.selectedColor);
         grid.setAdapter(adapter);
 
@@ -144,6 +144,8 @@ public class ColorChooserDialog extends BaseDialog implements AdapterView.OnItem
 
         private boolean showSelectedBorder = true;
 
+        private boolean animateChange = true;
+
         private ColorListener listener;
 
         /**
@@ -162,6 +164,7 @@ public class ColorChooserDialog extends BaseDialog implements AdapterView.OnItem
             positiveButton = in.readString();
             colors = in.createIntArray();
             showSelectedBorder = in.readInt() == 1;
+            animateChange = in.readInt() == 1;
             selectedColor = in.readInt();
             positiveBtnColor = in.readInt();
             negativeBtnColor = in.readInt();
@@ -350,13 +353,36 @@ public class ColorChooserDialog extends BaseDialog implements AdapterView.OnItem
             return negativeButtonColor(resources.getColor(colorResource));
         }
 
+        /**
+         * Sets the number of columns to be used
+         *
+         * @param columns Number of columns to show
+         * @return
+         */
         public Builder columns(int columns) {
             numColumns = columns <= 0 ? 3 : columns;
             return this;
         }
 
+        /**
+         * Sets the number of columns to be used
+         *
+         * @param columnsResource Integer resource for the number of columns to show
+         * @return
+         */
         public Builder columnsResource(int columnsResource) {
             return columns(resources.getInteger(columnsResource));
+        }
+
+        /**
+         * Sets whether the dialog will animate the changes of colors
+         *
+         * @param animateChange
+         * @return
+         */
+        public Builder animateChange(boolean animateChange) {
+            this.animateChange = animateChange;
+            return this;
         }
 
         public ColorChooserDialog build() {
@@ -375,6 +401,7 @@ public class ColorChooserDialog extends BaseDialog implements AdapterView.OnItem
             dest.writeString(positiveButton);
             dest.writeIntArray(colors);
             dest.writeInt(showSelectedBorder ? 1 : 0);
+            dest.writeInt(animateChange ? 1 : 0);
             dest.writeInt(selectedColor);
             dest.writeInt(positiveBtnColor);
             dest.writeInt(negativeBtnColor);

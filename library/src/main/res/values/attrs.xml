@@ -6,6 +6,7 @@
         <attr name="cc_colorNames" format="reference" />
         <attr name="cc_defaultColorName" format="string" />
         <attr name="cc_columnCount" format="integer" />
+        <attr name="cc_animateChanges" format="boolean" />
     </declare-styleable>
 
 </resources>

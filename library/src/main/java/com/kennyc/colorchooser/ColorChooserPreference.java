@@ -32,6 +32,8 @@ public class ColorChooserPreference extends DialogPreference implements AbsListV
 
     private int numColumns = 3;
 
+    private boolean animateChanges = true;
+
     public ColorChooserPreference(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
@@ -45,6 +47,7 @@ public class ColorChooserPreference extends DialogPreference implements AbsListV
         colorNames = a.getTextArray(R.styleable.ColorChooser_cc_colorNames);
         selectedColorName = a.getString(R.styleable.ColorChooser_cc_defaultColorName);
         numColumns = a.getInt(R.styleable.ColorChooser_cc_columnCount, getContext().getResources().getInteger(R.integer.color_chooser_column_count));
+        animateChanges = a.getBoolean(R.styleable.ColorChooser_cc_animateChanges, true);
         if (numColumns <= 0) numColumns = 3;
         setSummary(selectedColorName);
 
@@ -92,7 +95,7 @@ public class ColorChooserPreference extends DialogPreference implements AbsListV
         grid = (GridView) view.findViewById(R.id.color_chooser_grid);
         grid.setNumColumns(numColumns);
         grid.setOnItemClickListener(this);
-        ColorAdapter adapter = new ColorAdapter(getContext(), colors, true);
+        ColorAdapter adapter = new ColorAdapter(getContext(), colors, true, animateChanges);
         grid.setAdapter(adapter);
         adapter.setSelectedColor(selectedColor);
     }

@@ -5,6 +5,8 @@ import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
@@ -23,14 +25,17 @@ class ColorAdapter extends BaseAdapter {
 
     private boolean hasBorder = false;
 
+    private boolean animateChange = true;
+
     private int selectedPosition = AdapterView.INVALID_POSITION;
 
-    public ColorAdapter(Context context, int[] colors, boolean hasBorder) {
+    public ColorAdapter(Context context, int[] colors, boolean hasBorder, boolean animateChange) {
         Resources res = context.getResources();
         mInflater = LayoutInflater.from(context);
         this.colors = colors;
         size = res.getDimensionPixelSize(R.dimen.color_chooser_view_size);
         this.hasBorder = hasBorder;
+        this.animateChange = animateChange;
         if (hasBorder) borderSize = res.getDimensionPixelSize(R.dimen.color_chooser_border_width);
     }
 
@@ -101,6 +106,7 @@ class ColorAdapter extends BaseAdapter {
         if (isSelected) {
             dr.drawBorder(hasBorder);
             vh.check.setVisibility(View.VISIBLE);
+            animateChange(convertView);
         } else {
             dr.drawBorder(false);
             vh.check.setVisibility(View.GONE);
@@ -108,6 +114,35 @@ class ColorAdapter extends BaseAdapter {
 
         vh.color.setImageDrawable(dr);
         return convertView;
+    }
+
+    private void animateChange(final View view) {
+        if (!animateChange) return;
+
+        ScaleAnimation anim = new ScaleAnimation(1.0f, .5f, 1.0f, .5f, size / 2, size / 2);
+        anim.setDuration(350);
+        view.setAnimation(anim);
+        anim.start();
+
+        anim.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                ScaleAnimation anim = new ScaleAnimation(.5f, 1.0f, .5f, 1.0f, size / 2, size / 2);
+                view.setAnimation(anim);
+                anim.setDuration(350);
+                anim.start();
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
     }
 
     static class ViewHolder {

@@ -253,9 +253,19 @@ public class ColorChooserDialog extends BaseDialog implements AdapterView.OnItem
          * @param border
          * @return
          */
-        public Builder hasBorder(boolean border) {
+        public Builder border(boolean border) {
             showSelectedBorder = border;
             return this;
+        }
+
+        /**
+         * Whether or not the circle icons will have a border around them when selected
+         *
+         * @param border Boolean resource
+         * @return
+         */
+        public Builder border(int border) {
+            return border(resources.getBoolean(border));
         }
 
         /**

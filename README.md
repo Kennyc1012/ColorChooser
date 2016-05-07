@@ -83,9 +83,9 @@ repositories {
 ```groovy
 dependencies {
     // For standard flavor
-    compile 'com.github.Kennyc1012:ColorChooser:0.2.2:standardRelease@aar'
+    compile 'com.github.Kennyc1012:ColorChooser:0.3.0:standardRelease@aar'
     // For compat flavor
-    compile 'com.github.Kennyc1012:ColorChooser:0.2.2:compatRelease@aar'
+    compile 'com.github.Kennyc1012:ColorChooser:0.3.0:compatRelease@aar'
 }
 ```
 

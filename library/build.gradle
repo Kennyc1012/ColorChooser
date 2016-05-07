@@ -13,11 +13,11 @@ android {
 
     productFlavors {
         compat {
-            versionName ".3.0-compat"
+            versionName "0.3.0-compat"
         }
 
         standard {
-            versionName ".3.0"
+            versionName "0.3.0"
         }
     }
 
